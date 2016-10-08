@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Specifying menu width</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="MenuController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Specifying menu width</h1>
+</md-toolbar>
+<md-content>
+  <div layout="row" layout-padding
+       layout-align="start center"  >
+    Width:
+    <md-radio-group ng-model="menuWidth"
+                    layout="row"
+                    ng-init="menuWidth=2"  >
+      <md-radio-button ng-value="2">2</md-radio-button>
+      <md-radio-button ng-value="3">3</md-radio-button>
+      <md-radio-button ng-value="4">4</md-radio-button>
+      <md-radio-button ng-value="5">5</md-radio-button>
+      <md-radio-button ng-value="6">6</md-radio-button>
+      <md-radio-button ng-value="7">7</md-radio-button>
+    </md-radio-group>
+  </div>
+  <md-menu>
+    <md-button
+        md-position-mode="target-right target"
+        ng-click="$mdOpenMenu($event)">
+      Play profile
+      <md-icon md-menu-origin>play_arrow</md-icon>
+    </md-button>
+    <md-menu-content width="{{menuWidth}}">
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          Mode #1
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          Mode #2
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          Mode #3
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+  <md-divider></md-divider>
+  <div flex layout-padding class="md-body-1">
+    Last action: {{lastAction}}
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./menu.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'menu'])
+</script>
+</body>
+</html>

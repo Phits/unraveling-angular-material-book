@@ -1,0 +1,20 @@
+<md-bottom-sheet
+  class="md-list md-has-header"
+  style="background-color: #90CAF9"
+  ng-cloak>
+  <md-subheader>
+    '{{ctrl.dive.site}}' actions
+  </md-subheader>
+  <md-list>
+    <md-list-item ng-repeat="action in actions">
+      <md-button
+        class="md-list-item-content"
+        ng-click="doAction(action.done)">
+        <md-icon ng-style="{'color': action.color}">{{action.icon}}</md-icon>
+        <span class="md-inline-list-icon-label">
+          {{action.name}}
+        </span>
+      </md-button>
+    </md-list-item>
+  </md-list>
+</md-bottom-sheet>

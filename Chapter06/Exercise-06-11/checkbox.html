@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Checkboxes</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="/css/fonts.css">
+  <style>
+    small {
+      color: #757575; /* Grey 600 */
+      font-style: italic;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools">
+  <h1>Dive gear checklist</h1>
+</md-toolbar>
+<md-content>
+  <div layout="column"
+    layout-margin
+    ng-init="gear ={}"  >
+    <md-checkbox ng-model="gear.fins">
+      Fins
+      <small>&nbsp;({{gear.fins}})</small>
+    </md-checkbox>
+    <md-checkbox
+        ng-false-value="'no'"
+        ng-true-value="'yes'"
+        ng-model="gear.suit">
+      Neoprene suit
+      <small>&nbsp;({{gear.suit}})</small>
+    </md-checkbox>
+    <md-checkbox ng-model="gear.bcd"
+                 ng-false-value="undefined"
+                 ng-true-value="'taken'">
+      BCD jacket
+      <small>&nbsp;({{gear.bcd}})</small>
+    </md-checkbox>
+    <md-checkbox ng-model="gear.regulator">
+      Regulator
+      <small>&nbsp;({{gear.regulator}})</small>
+    </md-checkbox>
+    <md-checkbox
+        ng-disabled="!gear.regulator"
+        ng-model="gear.tank">
+      Tank
+      <small>&nbsp;({{gear.tank}})</small>
+    </md-checkbox>
+    <md-checkbox ng-model="gear.weights">
+      Weights
+      <small>&nbsp;({{gear.weights}})</small>
+    </md-checkbox>
+  </div>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{gear | json}}
+    </code>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

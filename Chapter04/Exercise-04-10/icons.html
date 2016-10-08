@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Icons</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="./icons/sprite-communication-black.css"/>
+</head>
+<body ng-app="myApp" layout="column">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    Image files
+  </div>
+</md-toolbar>
+<md-content layout="row" layout-padding>
+  <div flex="33">
+    Call
+    <div>
+      <img src="icons/ic_call_black_36dp.png">
+    </div>
+  </div>
+  <div flex="33">
+    Missed call
+    <div>
+      <img src="icons/ic_call_missed_black_36dp.png">
+    </div>
+  </div>
+  <div flex="33">
+    Chat
+    <div>
+      <img src="icons/ic_chat_black_36dp.png">
+    </div>
+  </div>
+</md-content>
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    Sprites
+  </div>
+</md-toolbar>
+<md-content layout="row" layout-padding>
+  <div flex="33">
+    Call
+    <div class="icon-communication-black
+      icon-communication-black-ic_call_black_24dp">
+    </div>
+  </div>
+  <div flex="33">
+    Missed call
+    <div class="icon-communication-black
+      icon-communication-black-ic_call_missed_black_24dp">
+    </div>
+  </div>
+  <div flex="33">
+    Chat
+    <div class="icon-communication-black
+      icon-communication-black-ic_chat_black_24dp">
+    </div>
+  </div>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial']);
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Sliders</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column">
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools"
+            ng-init="enabled=true">
+  <h1>Sliders</h1>
+  <span flex></span>
+  Enabled&nbsp;&nbsp;
+  <md-switch ng-model="enabled" >
+  </md-switch>
+</md-toolbar>
+<md-content flex>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Normal mode (values: 0-100)
+  </div>
+  <div layout ng-init="slider1Value = 20">
+    <div flex="10" layout layout-align="center center">
+      <span class="md-body-1">{{slider1Value}}</span>
+    </div>
+    <md-slider flex="80"
+      ng-disabled="!enabled"
+      ng-model="slider1Value">
+    </md-slider>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Normal mode (values: 0-100, step: 5)
+  </div>
+  <div layout ng-init="slider2Value = 25">
+    <div flex="10" layout layout-align="center center">
+      <span class="md-body-1">{{slider2Value}}</span>
+    </div>
+    <md-slider flex="80"
+      step="5"
+      ng-disabled="!enabled"
+      ng-model="slider2Value">
+    </md-slider>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Discrete mode (values: 1-10)
+  </div>
+  <div layout ng-init="slider3Value = 2">
+    <div flex="10" layout layout-align="center center">
+      <span class="md-body-1">{{slider3Value}}</span>
+    </div>
+    <md-slider flex="80" min="1" max="10"
+      md-discrete
+      ng-disabled="!enabled"
+      ng-model="slider3Value">
+    </md-slider>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Discrete mode (values: 0-10, step: 2)
+  </div>
+  <div layout ng-init="slider4Value = 2">
+    <div flex="10" layout layout-align="center center">
+      <span class="md-body-1">{{slider4Value}}</span>
+    </div>
+    <md-slider flex="80" min="0" max="10"
+      md-discrete
+      step="2"
+      ng-disabled="!enabled"
+      ng-model="slider4Value">
+    </md-slider>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Normal mode with primary color
+  </div>
+  <div layout ng-init="slider5Value = 33">
+    <div flex="10" layout layout-align="center center">
+      <span class="md-body-1">{{slider5Value}}</span>
+    </div>
+    <md-slider flex="80"
+      class="md-primary"
+      ng-disabled="!enabled"
+      ng-model="slider5Value">
+    </md-slider>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

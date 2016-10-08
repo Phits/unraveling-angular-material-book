@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Dive Log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    md-content#main {
+      background-color: #E0E0E0; /* Grey 300 */
+    }
+    md-card {
+      background-color: white;
+    }
+
+    md-card-footer {
+      background-color: #BBDEFB; /* Blue 100 */
+    }
+
+    span.tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: #BDBDBD; /* Grey 400 */
+      color: black;
+      font-variant: small-caps;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+  ng-controller="DiveLogController">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    Younderwater Dive Log
+    <span flex></span>
+    <md-button class="md-icon-button"
+      ng-show="enableShowTags()"
+      ng-click="showTags()"
+      ng-class="{'md-accent': isFilterOn()}">
+      <md-icon>
+        filter_list
+      </md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+<md-content layout="row" flex>
+  <md-content id="main" flex layout="column">
+    <section layout="row" layout-wrap>
+      <div flex="25"
+           flex-sm="50"
+           flex-xs="100"
+           ng-repeat="dive in getFilteredDives()">
+        <md-card>
+          <md-card-content>
+            <h1>{{dive.depth}} feet | {{dive.time}} min</h1>
+            <h2>{{dive.site}}</h2>
+            <h3>{{dive.location}}</h3>
+          </md-card-content>
+          <md-card-footer>
+            <span ng-repeat="tag in dive.tags"
+                  class="tag">
+              {{tag.toString()}}
+            </span>
+          </md-card-footer>
+        </md-card>
+      </div>
+    </section>
+  </md-content>
+  <md-sidenav class="md-sidenav-right md-whiteframe-z2"
+              md-component-id="tagsFilter"
+              md-is-locked-open="!hideTagBar()">
+    <md-toolbar class="md-toolbar-tools">
+      <h1>Tags</h1>
+      <span flex></span>
+      <md-button class="md-icon-button"
+                 ng-show="enableCloseTags()">
+        <md-icon ng-click="closeTags()">
+          close
+        </md-icon>
+      </md-button>
+    </md-toolbar>
+    <md-content layout-padding>
+      <md-list>
+        <md-list-item ng-repeat="tag in tags">
+          <md-button
+              class="md-primary"
+              ng-class="tag.selected ? 'md-raised md-accent' : ''"
+              ng-click="toggleTag(tag)">
+            {{tag.name}}
+          </md-button>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./divelog.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'divelog'])
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Tooltip</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .highlight {
+      color: #FFF176; /* Yellow 300 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Tooltip</h1>
+</md-toolbar>
+<md-content flex>
+  <div layout="row" layout-padding style="margin-top: 12px;">
+    <md-switch aria-label="Save mode">
+      Battery save mode
+      <md-tooltip
+        md-direction="bottom"
+        md-delay="2000">
+        Use
+        <span class="highlight">battery save</span>
+        mode
+      </md-tooltip>
+    </md-switch>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

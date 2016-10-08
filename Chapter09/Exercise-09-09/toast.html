@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Toast with action</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ToastController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Toast with action</h1>
+</md-toolbar>
+<md-content layout-align="start center">
+  <md-button class="md-raised md-primary"
+    ng-click="showToast()"
+    ng-disabled="toastVisible">
+    Show
+  </md-button>
+  <md-button class="md-raised md-accent"
+    ng-click="dismissToast()"
+    ng-disabled="!toastVisible">
+    Dismiss
+  </md-button>
+  <div flex layout-padding="">
+    <label>{{dismissAction}}</label>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./toast.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'toast'])
+</script>
+</body>
+</html>

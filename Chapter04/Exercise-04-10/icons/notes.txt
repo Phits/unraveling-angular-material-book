@@ -1,0 +1,1 @@
+These icons are from https://github.com/google/material-design-icons/tree/master/sprites/css-sprite

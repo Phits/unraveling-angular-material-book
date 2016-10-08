@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Autocomplete</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    .md-autocomplete-suggestions-container li .highlight {
+      color: #D50000; /* Red A700 */
+      font-weight: 500;
+      background-color: #E0E0E0; /* Grey 300 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="SimpleFormController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Autocomplete</h1>
+</md-toolbar>
+<md-content>
+  <form name="simple" novalidate
+        layout-margin>
+    <md-autocomplete
+        md-input-name="city"
+        md-item-text="city.toString()"
+        md-items="city in getMatchingCities(searchKey)"
+        md-search-text="searchKey"
+        md-selected-item="selectedCity"
+        placeholder="Type a city"
+        md-min-length="0">
+      <md-item-template>
+              <span
+                  md-highlight-text="searchKey"
+                  md-highlight-flags="i"  >
+                {{city.toString()}}
+            </span>
+      </md-item-template>
+      <md-not-found>
+        No matching cities found for '{{searchKey}}'.
+      </md-not-found>
+    </md-autocomplete>
+  </form>
+  <md-divider></md-divider>
+  <div layout-margin layout-padding>
+    <p>Selected city:
+      <code>{{selectedCity}}</code>
+    </p>
+    <p>Control value:
+      <code>{{simple.city.$modelValue}}</code>
+    </p>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./autocomplete.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'autocomplete'])
+</script>
+</body>
+</html>

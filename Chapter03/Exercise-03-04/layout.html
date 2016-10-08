@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Simple Layout</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet"
+          href="./lib/angular-material/angular-material.css"/>
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+    <style>
+      md-toolbar h1 {
+        margin: auto;
+        font-weight: 400;
+      }
+
+      md-toolbar.small h1 {
+        font-size: 1.25em;
+        margin: auto 0;
+        padding-left: 16px;
+      }
+
+      #content {
+        padding: 8px 40px;
+      }
+
+      #content.small {
+        padding: 8px 16px;
+      }
+    </style>
+  </head>
+  <body ng-app="myApp"
+    layout="column"
+    ng-controller="LayoutController as lc">
+
+  <md-toolbar layout="row"
+    ng-class="lc.screenSize">
+    <h1>{{lc.title}}</h1>
+  </md-toolbar>
+  <md-content id="content"
+    ng-class="lc.screenSize">
+    <h2>{{lc.sectionTitle}}</h2>
+    {{lc.sectionBody}}
+  </md-content>
+
+  <!-- Angular/Material scripts -->
+  <script src="./lib/angular/angular.js"></script>
+  <script src="./lib/angular-animate/angular-animate.js"></script>
+  <script src="./lib/angular-aria/angular-aria.js"></script>
+  <script src="./lib/angular-material/angular-material.js"></script>
+
+  <!-- App-specific scripts -->
+  <script src="./layout.js"></script>
+  <script type="text/javascript">
+    angular
+        .module('myApp', ['ngMaterial', 'layout'])
+  </script>
+  </body>
+</html>

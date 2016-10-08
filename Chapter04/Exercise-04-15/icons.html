@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Icons</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./style.css"/>
+  <style>
+    .material-icons.icon-call:before {
+      content: '\e0b0';
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icons with custom font (GlyphIcons Halflings)
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="33">
+        Pencil<br/>
+        <md-icon class="pencil"></md-icon>
+      </div>
+      <div flex="33">
+        Call<br/>
+        <md-icon md-font-set="md" md-font-icon="icon-call" />
+      </div>
+      <div flex="33">
+        Music<br/>
+        <md-icon md-font-set="gi" md-font-icon="music" />
+      </div>
+    </div>
+  </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icon sizes
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="25">
+        18px<br/>
+        <md-icon md-font-set="gi" md-font-icon="pencil size-18" />
+      </div>
+      <div flex="25">
+        24px<br/>
+        <md-icon md-font-set="gi" md-font-icon="pencil size-24" />
+      </div>
+      <div flex="25">
+        36px<br/>
+        <md-icon md-font-set="md" md-font-icon="icon-call size-36" />
+      </div>
+      <div flex="25">
+        48px<br/>
+        <md-icon md-font-set="gi" md-font-icon="pencil size-48" />
+      </div>
+    </div>
+  </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icon colors
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="25">
+        Red<br/>
+        <md-icon  md-font-set="md" md-font-icon="icon-call size-36 red" />
+      </div>
+      <div flex="25">
+        Green<br/>
+        <md-icon md-font-set="gi" md-font-icon="glass size-36 green" />
+      </div>
+      <div flex="25">
+        Blue<br/>
+        <md-icon md-font-set="gi" md-font-icon="glass size-36 blue" />
+      </div>
+      <div flex="25">
+        Purple<br/>
+        <md-icon md-font-set="gi" md-font-icon="glass size-36"
+          style="color: purple"/>
+      </div>
+    </div>
+  </md-content>
+</div>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+      .config(function($mdIconProvider){
+        $mdIconProvider.fontSet('gi', 'glyphicon');
+        $mdIconProvider.fontSet('md', 'material-icons');
+        $mdIconProvider.defaultFontSet('glyphicon');
+      });
+</script>
+</body>
+</html>

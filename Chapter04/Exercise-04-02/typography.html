@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Heading styles</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    div.flex-50 {
+      border: 1px dotted gray;
+    }
+    small {
+      background-color: #E0E0E0; /* Grey 300 */
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Heading styles
+    </div>
+  </md-toolbar>
+  <md-content layout="row" layout-padding
+      layout-wrap>
+    <div flex="50">
+      <h1 class="md-display-1">&lt;h1&gt;
+        <small>md-display-1</small>
+      </h1>
+    </div>
+    <div flex="50">
+      <h4 class="md-display-1">&lt;h4&gt;
+        <small>md-display-1</small>
+      </h4>
+    </div>
+    <div flex="50">
+      <h2 class="md-display-2">&lt;h2&gt;
+        <small>md-display-2</small>
+      </h2>
+    </div>
+    <div flex="50">
+      <h3 class="md-display-2">&lt;h3&gt;
+        <small>md-display-2</small>
+      </h3>
+    </div>
+    <div flex="50">
+      <h3 class="md-display-3">&lt;h3&gt;
+        <small>md-display-3</small>
+      </h3>
+    </div>
+    <div flex="50">
+      <h2 class="md-display-3">&lt;h2&gt;
+        <small>md-display-3</small>
+      </h2>
+    </div>
+    <div flex="50">
+      <h4 class="md-display-4">&lt;h4&gt;
+        <small>md-display-4</small>
+      </h4>
+    </div>
+    <div flex="50">
+      <h1 class="md-display-4">&lt;h1&gt;
+        <small>md-display-4</small>
+      </h1>
+    </div>
+  </md-content>
+</div>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial']);
+</script>
+</body>
+</html>

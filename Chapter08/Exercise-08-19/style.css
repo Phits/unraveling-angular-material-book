@@ -1,0 +1,60 @@
+.vertical-axis {
+  width: 72px;
+}
+
+.horizontal-axis {
+  height: 72px;
+}
+#corner {
+  background-color: #BDBDBD;
+}
+
+#horizontalRuler {
+  width: 672px;
+  background-color: #E0E0E0;
+}
+
+#verticalRuler {
+  height: 480px;
+  background-color: #E0E0E0;
+}
+
+#mainPanel {
+  width: 672px;
+  height: 480px;
+  background-color: #424242;
+  color: white;
+  font-size: 2em;
+}
+
+.horizontal-item {
+  border-right: 1px solid #9E9E9E;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 72px;
+  padding-top: 16px;
+  text-align: center;
+  width: 56px;
+  cursor: pointer;
+}
+
+.vertical-item {
+  border-bottom: 1px solid #9E9E9E;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 72px;
+  padding-top: 16px;
+  padding-left: 12px;
+  text-align: left;
+  height: 56px;
+  cursor: pointer;
+}
+
+.highlighted {
+  background-color: #2196F3; /* Blue 500 */
+  color: white;
+  border-right: none;
+  border-bottom: none;
+}
+
+

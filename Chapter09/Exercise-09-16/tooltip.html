@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Tooltip</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .highlight {
+      color: #FFF176; /* Yellow 300 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Tooltip</h1>
+</md-toolbar>
+<md-content flex>
+  <div layout="row" style="margin-top: 36px;"
+    layout-align="center center">
+    <md-button class="md-fab md-accent"
+      style="margin-left: 60px;"
+      aria-label="Print">
+      <md-tooltip md-autohide
+        md-direction="left">
+        Print
+      </md-tooltip>
+      <md-icon>print</md-icon>
+    </md-button>
+    <md-button class="md-primary md-raised" aria-label="Play">
+      <md-icon>play_arrow</md-icon>
+      Play
+      <md-tooltip md-autohide
+        md-direction="top">
+        Play video
+      </md-tooltip>
+    </md-button>
+    <md-button class="md-fab md-accent md-mini"
+      style="margin-right: 80px;"
+      aria-label="Share">
+      <md-tooltip md-autohide
+        md-direction="right">
+        Share
+      </md-tooltip>
+      <md-icon>share</md-icon>
+    </md-button>
+    <md-checkbox aria-label="Night mode">
+      Night mode
+      <md-tooltip md-autohide
+        md-direction="bottom">
+        Use night mode
+      </md-tooltip>
+    </md-checkbox>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

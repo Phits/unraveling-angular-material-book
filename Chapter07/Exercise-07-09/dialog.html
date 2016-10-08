@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Alert dialog</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="DialogController" >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Alert dialog</h1>
+</md-toolbar>
+<md-content id="sourcePanel">
+  <div layout-margin layout-margin>
+    <md-button
+        class="md-raised md-accent"
+        ng-click="showAlert($event)">
+      Show an alert
+    </md-button>
+  </div>
+  <md-divider></md-divider>
+  <div
+    ng-init="saver=true"
+    layout="column"
+    layout-margin layout-padding>
+    <md-switch ng-model="saver">
+      Battery saver
+    </md-switch>
+    <md-checkbox
+        style="margin-left:60px;"
+        ng-disabled="!saver">
+      Use it only when battery is low
+    </md-checkbox>
+    <md-checkbox
+        style="margin-left:60px;"
+        ng-disabled="!saver">
+      Allow to terminate passive apps
+    </md-checkbox>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./dialog.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'dialog'])
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "UnravelingAngularMaterial",
+  "version": "0.11.2",
+  "description": "Code samples for the Unraveling Angular Material book",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "serve-static": "^1.10.0"
+  }
+}

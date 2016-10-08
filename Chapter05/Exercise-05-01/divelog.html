@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Header with Buttons</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .divecard {
+      margin: 16px;
+      padding: 8px 24px;
+      background-color: #039BE5; /* Orange 800 */
+    }
+
+    .divecard.longest {
+      background-color: #311B92; /* Deep purple 900 */
+    }
+
+    .divecard.deepest {
+      background-color: #6200EA; /* Deep purple A700 */
+    }
+
+    .divecard h2 {
+      color: white;
+      font-weight: 500;
+      font-size: 1.75em;
+    }
+
+    .divecard h1, .divecard h3 {
+      font-weight: 200;
+      color: #ECEFF1; /* Grey 50 */
+    }
+    .divecard h1 {
+      font-size: 1.5em;
+      margin: 0;
+      margin-top: 16px;
+    }
+
+    .divecard h3 {
+      margin: 0;
+      font-size: 1.25em;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="DiveLogController">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      My latest dives
+      <span flex></span>
+      <md-icon>border_color</md-icon>
+      <md-button ng-click="displayAll()"
+                 ng-class="!showLongest && !showDeepest ? 'md-accent md-hue-1' : ''">
+        None
+      </md-button>
+      <md-button ng-click="displayLongest()"
+                 ng-class="showLongest ? 'md-accent md-hue-1' : ''">
+        Longest
+      </md-button>
+      <md-button ng-click="displayDeepest()"
+                 ng-class="showDeepest ? 'md-accent md-hue-1' : ''">
+        Deepest
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content flex>
+    <div layout="row" layout-wrap>
+      <div flex="33" ng-repeat="dive in dives">
+        <div class="divecard"
+             ng-class="{longest: showLongest && longest === $index,
+              deepest: showDeepest && deepest === $index}">
+          <h1>{{dive.site}}</h1>
+          <h3><small>{{dive.location}}</small></h3>
+          <h2>{{dive.depth}} feet | {{dive.time}} min</h2>
+        </div>
+      </div>
+    </div>
+  </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Powered by Angular Material
+    </div>
+  </md-toolbar>
+</div>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./dives.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'dives'])
+      .config(function($mdThemingProvider){
+        $mdThemingProvider.theme('default')
+            .primaryPalette('red')
+            .accentPalette('orange');
+      });
+</script>
+</body>
+</html>

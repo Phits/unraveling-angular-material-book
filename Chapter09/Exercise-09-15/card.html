@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Card</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    md-content {
+      background-color: #EEEEEE; /* Grey 200 */
+    }
+
+    md-card-content {
+      background-color: white;
+    }
+
+    md-card-footer {
+      background-color: #BDBDBD; /* Grey 400 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="CardController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Card</h1>
+</md-toolbar>
+<md-content flex>
+  <div layout="row" layout-wrap>
+    <div flex="25"
+         flex-md="50"
+         flex-sm="100"
+         ng-repeat="card in diveCards">
+      <md-card
+        ng-click="doAction($event,
+         'Show dive details')"  >
+        <img class="md-card-image" alt="{{card.title}}" ng-src="./images/{{card.src}}">
+        <md-card-content>
+          <h2>{{card.title}}</h2>
+          <h3>{{card.site}}</h3>
+          <p>{{card.taken}}</p>
+        </md-card-content>
+        <div class="md-actions" layout="row" layout-align="start center"
+             style="padding-left: 8px;"  >
+          <md-button
+            class="md-raised md-primary"
+            ng-click="doAction($event,
+              'Log entry shared')"  >
+            Share
+          </md-button>
+          <md-button
+            class="md-raised md-primary"
+            ng-click="doAction($event,
+            'Log entry printed')">
+            Print
+          </md-button>
+        </div>
+      </md-card>
+    </div>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./card.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'card'])
+</script>
+</body>
+</html>

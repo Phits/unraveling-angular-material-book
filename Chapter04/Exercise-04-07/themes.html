@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Themes</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+  md-theme="{{myTheme}}">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    Dynamic themes
+    <span flex></span>
+    <md-button ng-click="myTheme = 'default'">
+      Default
+    </md-button>
+    <md-button ng-click="myTheme = 'custom1Theme'">
+      Custom #1
+    </md-button>
+    <md-button ng-click="myTheme = 'custom2Theme'">
+      Custom #2
+    </md-button>
+  </div>
+</md-toolbar>
+<md-content>
+  <div layout-padding>
+    Default colors
+  </div>
+  <div layout="row">
+    <div flex="25">
+      <md-button>
+        (none)
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-hue-1">
+        md-hue-1
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-hue-2">
+        md-hue-2
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-hue-3">
+        md-hue-3
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <div layout-padding>
+    Primary colors
+  </div>
+  <div layout="row">
+    <div flex="25">
+      <md-button class="md-primary">
+        md-primary
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-primary md-hue-1">
+        md-primary md-hue-1
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-primary md-hue-2">
+        md-primary md-hue-2
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-primary md-hue-3">
+        md-primary md-hue-3
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <div layout-padding>
+    Accent colors
+  </div>
+  <div layout="row">
+    <div flex="25">
+      <md-button class="md-accent">
+        md-accent
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-accent md-hue-1">
+        md-accent md-hue-1
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-accent md-hue-2">
+        md-accent md-hue-2
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-accent md-hue-3">
+        md-accent md-hue-3
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <div layout-padding>
+    Warn colors
+  </div>
+  <div layout="row">
+    <div flex="25">
+      <md-button class="md-warn">
+        md-warn
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-warn md-hue-1">
+        md-warn md-hue-1
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-warn md-hue-2">
+        md-warn md-hue-2
+      </md-button>
+    </div>
+    <div flex="25">
+      <md-button class="md-warn md-hue-3">
+        md-warn md-hue-3
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+      .config(function($mdThemingProvider){
+        $mdThemingProvider.theme('custom1Theme')
+          .primaryPalette('orange')
+          .accentPalette('blue')
+          .warnPalette('pink');
+        $mdThemingProvider.theme('custom2Theme')
+            .primaryPalette('green')
+            .accentPalette('lime')
+            .warnPalette('brown');
+        $mdThemingProvider.alwaysWatchTheme(true);
+      });
+</script>
+</body>
+</html>

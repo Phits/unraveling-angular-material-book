@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Icons</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .material-icons.icon-call:before {
+      content: '\e0b0';
+    }
+
+    .material-icons.icon-call-missed:before {
+      content: '\e0b4';
+    }
+
+    .material-icons.icon-chat:before {
+      content: '\e0b7';
+    }
+
+    md-icon.size-18 {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+    }
+
+    md-icon.size-24 {
+      font-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
+
+    md-icon.size-36 {
+      font-size: 36px;
+      height: 36px;
+      width: 36px;
+    }
+
+    md-icon.size-48 {
+      font-size: 48px;
+      height: 48px;
+      width: 48px;
+    }
+
+    md-icon.red {
+      color: #F44336; /* Red 500 */
+    }
+
+    md-icon.green {
+      color: #4CAF50; /* Green 500 */
+    }
+
+    md-icon.blue {
+      color: #2196F3; /* Blue 500 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icons with fonts (class names)
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="33">
+        Call<br/>
+        <md-icon class="material-icons icon-call" />
+      </div>
+      <div flex="33">
+        Missed call<br/>
+        <md-icon class="material-icons icon-call-missed" />
+      </div>
+      <div flex="33">
+        Chat<br/>
+        <md-icon class="material-icons icon-chat" />
+      </div>
+    </div>
+  </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icon sizes
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="25">
+        18px<br/>
+        <md-icon class="material-icons icon-call size-18" />
+      </div>
+      <div flex="25">
+        24px<br/>
+        <md-icon class="material-icons icon-call size-24" />
+      </div>
+      <div flex="25">
+        36px<br/>
+        <md-icon class="material-icons icon-call size-36" />
+      </div>
+      <div flex="25">
+        48px<br/>
+        <md-icon class="material-icons icon-call size-48" />
+      </div>
+    </div>
+  </md-content>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      Icon colors
+    </div>
+  </md-toolbar>
+  <md-content>
+    <div layout="row" layout-padding>
+      <div flex="25">
+        Red<br/>
+        <md-icon class="material-icons icon-chat size-36 red" />
+      </div>
+      <div flex="25">
+        Green<br/>
+        <md-icon class="material-icons icon-chat size-36 green" />
+      </div>
+      <div flex="25">
+        Blue<br/>
+        <md-icon class="material-icons icon-chat size-36 blue" />
+      </div>
+      <div flex="25">
+        Purple<br/>
+        <md-icon class="material-icons icon-chat size-36 red"
+          style="color: purple"/>
+      </div>
+    </div>
+  </md-content>
+</div>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial']);
+</script>
+</body>
+</html>

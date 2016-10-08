@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Linear progress</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    .progress-cell {
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ProgressController">
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools">
+  <h1>Linear progress</h1>
+  <span flex></span>
+  <md-button ng-click="start()"
+    ng-if="!isStarted">
+    Start
+  </md-button>
+  <md-button ng-click="stop()"
+    ng-if="isStarted">
+    Stop
+  </md-button>
+</md-toolbar>
+<md-content>
+  <div layout-padding
+    class="md-body-2">
+    Indeterminate state
+  </div>
+  <div flex class="progress-cell">
+    <md-progress-linear md-mode="indeterminate">
+    </md-progress-linear>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Determinate mode
+  </div>
+  <div flex class="progress-cell">
+    <md-progress-linear
+      md-mode="determinate"
+      value="{{currentValue}}"
+    </md-progress-linear>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Query mode (accent color, hue-3)
+  </div>
+  <div flex class="progress-cell">
+    <md-progress-linear
+      md-mode="query"
+      class="md-accent md-hue-3"  >
+    </md-progress-linear>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Buffer mode (warn color)
+  </div>
+  <div flex class="progress-cell">
+    <md-progress-linear
+      md-mode="buffer"
+      value="{{currentValue}}"
+      md-buffer-value="{{bufferValue}}"
+      class="md-warn">
+    </md-progress-linear>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./progress.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'progress'])
+</script>
+</body>
+</html>

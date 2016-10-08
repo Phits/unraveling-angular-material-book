@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Simple Layout</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+  <style>
+    div.flex-25, div.flex-33, div.flex-75,
+    div.flex-initial,
+    div.flex-auto {
+      border: 1px dotted gray;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    div.layout-row {
+      background-color: #90CAF9; /* Blue 200 */
+    }
+
+    div.layout-column {
+      background-color: #FFE0B2; /* Orange 100 */
+      text-align: center;
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+<div layout="row">
+  <div flex="33">33%</div>
+  <div flex="75">75%</div>
+</div>
+<div layout="row" style="margin-top: 24px;">
+  <div flex="initial" style="width: 400px">
+    initial
+  </div>
+  <div flex="25">25%</div>
+</div>
+<div layout="row" style="margin-top: 24px;">
+  <div flex="auto" style="width: 400px">
+    auto
+  </div>
+  <div flex="25">25%</div>
+</div>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

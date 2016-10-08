@@ -1,0 +1,19 @@
+<md-toast style="margin-top: 64px">
+  <div layout="row" layout-align="start center">
+    <div style="padding-right: 8px;">
+      <md-icon style="color: white">email</md-icon>
+    </div>
+    <div flex>
+      You have received new email.
+      <em>Turn off notifications?</em>
+    </div>
+  </div>
+  <md-button class="md-raised md-primary"
+             ng-click="toastAction('Yes')">
+    Yes
+  </md-button>
+  <md-button class="md-raised md-warn"
+             ng-click="toastAction('No')">
+    No
+  </md-button>
+</md-toast>

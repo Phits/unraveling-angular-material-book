@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Switches</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link href="/css/material-icons.css" rel="stylesheet">
+  <style>
+    md-switch#nitrox .md-label {
+      margin-top: 36px;
+    }
+    md-switch#nitrox {
+      margin-bottom: 32px;
+    }
+
+    small {
+      color: #757575; /* Grey 600 */
+      font-style: italic;
+    }
+
+    .explanation {
+      margin-top: 4px;
+    }
+
+    .explanation-text {
+      font-size: 0.9em;
+      color: #757575; /* Grey 600 */
+    }
+
+    .explanation-icon {
+      margin-right: 8px;
+      color: #2196F3; /* Blue 500 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column">
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools">
+  <h1>Dive computer settings</h1>
+</md-toolbar>
+<md-content>
+  <div layout="column"
+    layout-margin
+    ng-init="settings ={}"  >
+    <md-switch
+        ng-false-value="'off'"
+        ng-true-value="'on'"
+        ng-model="settings.beep">
+      Beep
+      <small>({{settings.beep}})</small>
+    </md-switch>
+    <md-switch ng-model="settings.depth">
+      Depth alarm
+      <small>({{settings.depth}})</small>
+    </md-switch>
+    <md-switch
+        id="nitrox"
+        ng-false-value="'air'"
+        ng-true-value="'enriched air'"
+        class="md-primary"
+        ng-model="settings.nitrox">
+      Nitrox mode
+      <small>({{settings.nitrox}})</small>
+      <div class="explanation">
+        <md-icon class="material-icons explanation-icon">
+          comment
+        </md-icon>
+                  <span class="explanation-text">
+                    Do not forget to use the oxygen analyzer!
+                  </span>
+      </div>
+    </md-switch>
+    <md-switch
+        ng-false-value="'off'"
+        ng-true-value="'on'"
+        ng-model="settings.deepStop">
+      Use Deep Stop
+      <small>({{settings.deepStop}})</small>
+    </md-switch>
+  </div>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{settings | json}}
+    </code>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

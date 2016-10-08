@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Simple Layout</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+    content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+    href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+    href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+
+</head>
+<body ng-app="myApp"
+  layout="column">
+<md-toolbar>
+  <h1>Header row</h1>
+</md-toolbar>
+<md-content>
+  <h2>Content section</h2>
+</md-content>
+<md-toolbar>
+  <h1>Footer row</h1>
+</md-toolbar>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

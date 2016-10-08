@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Lists</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .expanded {
+      color: #2196f3; /* Blue 500 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ListController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Dive travel info</h1>
+</md-toolbar>
+<md-content>
+  <md-list flex="33" flex-md="50" flex-sm
+    ng-repeat="item in travelInfo">
+    <md-divider ng-if="dividerBefore($index)"></md-divider>
+      <md-list-item class="md-list-item-text"
+          ng-class="{expanded: item.expanded}"
+          ng-click="expandOrCollapse(item)">
+        <md-icon class="material-icons"
+          ng-class="{expanded: item.expanded}">
+          {{item.icon}}
+        </md-icon>
+        <p>{{item.title}}</p>
+        <md-icon class="ms-secondary material-icons">
+          {{item.expanded ? 'keyboard_arrow_up'
+            : 'keyboard_arrow_down'}}
+        </md-icon>
+      </md-list-item>
+      <div ng-if="item.expanded">
+        <md-list-item class="md-2-line"
+          ng-repeat="topic in item.topics"
+          ng-click="displayTopic($event, topic)"  >
+          <div class="md-list-item-text md-offset">
+            <h3>{{topic.toString()}}</h3>
+          </div>
+        </md-list-item>
+      </div>
+    <md-divider ng-if="dividerAfter($index)"></md-divider>
+  </md-list>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./list.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'list'])
+</script>
+</body>
+</html>

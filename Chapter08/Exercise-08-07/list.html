@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Lists</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ListController"  >
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools">
+  <h1>Dive gear checklist (secondary actions)</h1>
+</md-toolbar>
+<md-content>
+  <md-list>
+    <md-list-item ng-repeat="item in checklist">
+      <md-checkbox ng-model="item.packed"></md-checkbox>
+      <p>{{item.name}}</p>
+      <md-icon class="md-secondary material-icons"
+        ng-click="explain($event, item.name)">
+        comment
+      </md-icon>
+    </md-list-item>
+  </md-list>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./list.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'list'])
+</script>
+</body>
+</html>

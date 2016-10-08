@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Simple Layout</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+  <style>
+    div.flex-25 {
+      border: 1px solid gray;
+      text-align: center;
+      padding: 16px;
+      height: 80px;
+    }
+  </style>
+</head>
+<body ng-app="myApp"
+  layout="column">
+<md-content layout="column" flex>
+  <div flex>
+    <div layout="row" layout-wrap>
+      <div flex="25">Cell #1</div>
+      <div flex="25">Cell #2</div>
+      <div flex="25">Cell #3</div>
+      <div flex="25">Cell #4</div>
+      <div flex="25">Cell #5</div>
+      <div flex="25">Cell #6</div>
+    </div>
+  </div>
+</md-content>
+<md-toolbar class="md-toolbar-tools">
+  Footer
+</md-toolbar>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial'])
+</script>
+</body>
+</html>

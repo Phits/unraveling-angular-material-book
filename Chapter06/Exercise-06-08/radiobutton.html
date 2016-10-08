@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Radio buttons</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="SimpleFormController">
+<!-- Single column -->
+<md-toolbar class="md-toolbar-tools">
+  <h1>Radio buttons</h1>
+</md-toolbar>
+<md-content>
+  <form name="simple" novalidate layout-margin>
+    <div layout="column" layout-margin>
+      <div class="md-body-2">
+        Dive type
+      </div>
+      <md-radio-group ng-model="dive.type"
+                      ng-init="dive.type=0">
+        <md-radio-button
+            ng-repeat="type in diveTypes"
+            aria-label="{{type.name}}"
+            ng-value="type.id">
+          {{type.name}}
+        </md-radio-button>
+      </md-radio-group>
+      <md-divider></md-divider>
+      <div class="md-body-2">
+        Altitude
+      </div>
+      <md-radio-group ng-model="dive.altitudeType">
+        <md-radio-button
+            ng-repeat="alt in altitudeTypes"
+            aria-label="{{alt.category}}"
+            ng-value="alt.category">
+          {{alt.category}}
+        </md-radio-button>
+      </md-radio-group>
+    </div>
+    <md-button class="md-raised md-primary"
+               ng-click="register(dive)"
+               ng-disabled="simple.$invalid"  >
+      Register
+    </md-button>
+  </form>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{diveInfo | json}}
+    </code>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./radiobutton.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'radiobutton'])
+</script>
+</body>
+</html>

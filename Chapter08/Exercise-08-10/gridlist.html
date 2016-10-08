@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Grid list</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    .light-text {
+      color: white;
+    }
+    .dark-text {
+      color: black;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="GridListController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Grid list</h1>
+</md-toolbar>
+<md-content>
+  <md-grid-list md-row-height="100px" md-cols="4">
+    <md-grid-tile
+        ng-repeat="item in palette"
+        ng-class="item.light ? 'light-text' : 'dark-text'"
+        ng-style="{'background-color': item.color}">
+      {{item.name}}
+    </md-grid-tile>
+  </md-grid-list>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./gridlist.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'gridlist'])
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Dynamic tabs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+  layout-fill
+  ng-controller="DiveSitesController">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    My favorite dive sites
+    <span flex></span>
+    <md-button ng-click="disableEven = false">
+      Enable all tabs
+    </md-button>
+    <md-button ng-click="disableEven = true">
+      Disable even tabs
+    </md-button>
+    <md-button ng-click="selectedIndex = 2">
+      Select tab #3
+    </md-button>
+  </div>
+</md-toolbar>
+<md-content>
+  <md-tabs md-border-bottom
+           md-selected="selectedIndex">
+    <md-tab ng-repeat="site in diveSites" label="{{site.toString()}}"
+            ng-disabled="disableEven && $index%2 == 0">
+      <md-content class="md-padding">
+        <h1 class="md-display-1">{{site.toString()}}</h1>
+        <p class="md-body-1">
+          This is a beatiful dive site!
+        </p>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>
+<md-toolbar class="md-accent">
+  <div class="md-toolbar-tools">
+    Younderwater, 2015
+  </div>
+</md-toolbar>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./divesites.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'divesites'])
+      .config(function($mdThemingProvider){
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('orange');
+      });
+</script>
+</body>
+</html>

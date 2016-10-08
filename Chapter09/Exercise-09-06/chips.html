@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Chips with template</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+  ng-controller="ChipsController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Chips with item templates</h1>
+</md-toolbar>
+<md-content layout-padding layout-align="center center">
+  <div flex layout="column">
+    <md-chips ng-model="fishList"
+      md-on-append="newChip($chip)">
+      <md-chip-template>
+        {{$chip.name}}
+        (<em>{{$chip.size}}</em>)
+      </md-chip-template>
+    </md-chips>
+    <div>
+      <code>{{fishList | json}}</code>
+    </div>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./chips.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'chips'])
+</script>
+</body>
+</html>

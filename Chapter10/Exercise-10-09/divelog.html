@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Dive Log</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .card {
+      max-width: 400px;
+      margin: auto;
+      margin-top: 24px;
+    }
+    #parentPanel {
+      overflow: hidden;
+      background-color: #424242; /* Grey 800 */
+    }
+
+    .selected {
+      background-color: #e0e0e0; /* Gray 300 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="DiveLogController">
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    Younderwater Dive Log
+  </div>
+</md-toolbar>
+<md-content layout="row" flex>
+  <md-content layout="column" flex="33">
+    <md-list>
+      <md-list-item class="md-3-line"
+                    ng-repeat="dive in dives"
+                    ng-click="setDive(dive)"
+                    ng-class="{'selected': dive == selectedDive}">
+        <div class="md-list-item-text">
+          <h3>{{dive.site}}</h3>
+          <h4>{{dive.location}}</h4>
+          <p>{{dive.depth}} feet | {{dive.time}} min</p>
+          <md-divider></md-divider>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  <md-content flex
+              id="parentPanel">
+    <md-card class="card"
+             ng-click="showBottomSheet($event)">
+      <img class="md-card-image"
+           alt="{{selectedDive.site}}"
+           ng-src="./images/{{selectedDive.image}}">
+      <md-card-content>
+        <h1>{{selectedDive.depth}} feet | {{selectedDive.time}} min</h1>
+        <h2>{{selectedDive.site}}</h2>
+        <h3>{{selectedDive.location}}</h3>
+      </md-card-content>
+      <md-card-footer>
+            <span ng-repeat="tag in dive.tags"
+                  class="tag">
+              {{tag.toString()}}
+            </span>
+      </md-card-footer>
+    </md-card>
+  </md-content>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./divelog.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'divelog'])
+</script>
+</body>
+</html>

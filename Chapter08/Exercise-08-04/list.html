@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Lists</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ListController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>My favorite dives</h1>
+</md-toolbar>
+<md-content>
+  <md-list>
+    <div ng-repeat="header in headers"
+         ng-init="headerIndex = $index"  >
+      <md-subheader>{{header.toString()}}</md-subheader>
+      <md-list-item
+          ng-repeat="dive in dives"
+          ng-class="headerIndex == 1 ? 'md-2-line' : 'md-3-line'">
+        <img ng-src="./images/{{dive.avatar}}" class="md-avatar" alt="{{dive.site}}" />
+        <div class="md-list-item-text">
+          <h3>{{dive.site}}</h3>
+          <h4 ng-if="headerIndex != 1">{{dive.location}}</h4>
+          <p>{{dive.depth}} feet | {{dive.time}} min</p>
+        </div>
+      </md-list-item>
+      <md-divider></md-divider>
+    </div>
+  </md-list>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./list.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'list'])
+</script>
+</body>
+</html>

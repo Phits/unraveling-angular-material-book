@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Header</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column" layout-fill>
+<md-toolbar md-scroll-shrink
+            md-shrink-speed-factor="0.2"
+            class="md-tall">
+  <div class="md-toolbar-tools md-toolbar-tools-bottom">
+    Night Dive Rules
+  </div>
+</md-toolbar>
+<md-content flex
+            layout-margin  layout-padding>
+  <div style="height:2000px">
+    <h1 class="md-display-2">Rule #1</h1>
+    <h1 class="md-display-2">Rule #2</h1>
+    <p>...</p>
+    <h1 class="md-display-2">Rule #123</h1>
+  </div>
+</md-content>
+<md-toolbar class="md-medium-tall md-accent">
+  <div class="md-toolbar-tools">
+    Powered by Angular Material
+  </div>
+</md-toolbar>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial']);
+</script>
+</body>
+</html>

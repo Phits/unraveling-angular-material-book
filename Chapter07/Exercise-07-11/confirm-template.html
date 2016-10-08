@@ -1,0 +1,30 @@
+<style>
+  md-dialog-content h3 {
+    padding: 16px;
+  }
+</style>
+<md-dialog style="min-width: 400px">
+  <md-toolbar class="md-toolbar-tools">
+    <h1>Do you want to delete this dive log entry?</h1>
+  </md-toolbar>
+  <md-dialog-content>
+    <h3>{{ctrl.dive.site}}, {{ctrl.dive.location}}</h3>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button
+      ng-click="cancel()">
+      Do not delete
+    </md-button>
+    <md-button
+      class="md-raised md-warn"
+      ng-click="closeWith('Archive')">
+      Archive
+    </md-button>
+    <md-button
+      class="md-raised md-warn"
+      ng-click="closeWith('Delete')">
+      Delete
+    </md-button>
+  </div>
+</md-dialog>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Using menus</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="MenuController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Using menus</h1>
+</md-toolbar>
+<md-content>
+  <md-menu
+      md-position-mode="target-right target"
+      md-offset="0 32"
+      style="margin-left: 120px;"  >
+    <md-button
+        ng-click="$mdOpenMenu($event)">
+      Play profile
+      <md-icon md-menu-origin>play_arrow</md-icon>
+    </md-button>
+    <md-menu-content>
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          <md-icon>play_arrow</md-icon>
+          From beginning
+        </md-button>
+      </md-menu-item>
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          <md-icon>keyboard_arrow_right</md-icon>
+          From current time point
+        </md-button>
+      </md-menu-item>
+      <md-divider></md-divider>
+      <md-menu-item>
+        <md-button ng-click="handle($event)">
+          <md-icon>keyboard_arrow_up</md-icon>
+          Ascension phase
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./menu.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'menu'])
+</script>
+</body>
+</html>

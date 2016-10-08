@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>Simple Layout</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet"
+          href="./lib/angular-material/angular-material.css"/>
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
+    <style>
+      md-toolbar h1 {
+        margin: auto;
+        font-weight: 400;
+      }
+
+      div.layout-column div.flex {
+        border: 1px dotted gray;
+        background-color: #FFE0B2; /* Orange 100 */
+        text-align: center;
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body ng-app="myApp"
+    layout="row"
+    ng-controller="LayoutController as lc">
+  <!-- Single column -->
+  <div flex layout="column" tabIndex="-1" role="main">
+    <md-toolbar layout="row">
+      <h1>{{lc.screenSize}}</h1>
+    </md-toolbar>
+    <md-content id="content">
+      <div layout="column">
+        <div flex>Always visible #1</div>
+        <div flex hide-xs hide-gt-sm>Visible on small #1</div>
+        <div flex hide-xs hide-sm hide-lg>Visible on medium #1</div>
+        <div flex hide-xs hide-sm hide-md>Visible on large #1</div>
+        <div flex hide show-sm>Visible on small #2</div>
+        <div flex hide show-md>Visible on medium #2</div>
+        <div flex hide show-lg>Visible on large #2</div>
+        <div flex hide>Always hidden</div>
+        <div flex hide show>Always visible #2</div>
+      </div>
+    </md-content>
+  </div>
+
+  <!-- Angular/Material scripts -->
+  <script src="./lib/angular/angular.js"></script>
+  <script src="./lib/angular-animate/angular-animate.js"></script>
+  <script src="./lib/angular-aria/angular-aria.js"></script>
+  <script src="./lib/angular-material/angular-material.js"></script>
+
+  <!-- App-specific scripts -->
+  <script src="./layout.js"></script>
+  <script type="text/javascript">
+    angular
+        .module('myApp', ['ngMaterial', 'layout'])
+  </script>
+  </body>
+</html>

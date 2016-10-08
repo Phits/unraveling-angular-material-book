@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Datepicker</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="/css/fonts.css">
+<style>
+  .validation-messages {
+    font-size: 11px;
+    color: #F44336;
+    margin: 0 0 0 48px;
+  }
+</style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="SimpleFormController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Datepicker</h1>
+</md-toolbar>
+<md-content>
+  <div class="md-body-1" layout-margin layout-padding>
+    Please specify your last eligible dive to avoid an extra check dive!
+    <br/>
+    Your dive must not be older than 3 months.
+  </div>
+  <form name="simple" novalidate
+    layout-margin>
+    <md-checkbox ng-model="user.hasDive">
+      I have an eligible dive
+    </md-checkbox>
+    <div layout="column" style="margin-left: 36px">
+      <md-input-container md-no-float>
+        <input name="diveSite"
+               ng-model="user.diveSite"
+               ng-disabled="!user.hasDive"
+               required
+               placeholder="Dive Site"
+               maxlength="32" />
+        <div ng-messages="simple.diveSite.$error"
+             ng-show="simple.diveSite.$dirty">
+          <div ng-message="required">Please provide a dive site name!</div>
+        </div>
+      </md-input-container>
+      <div>
+        <md-datepicker name="diveDate"
+                       ng-disabled="!user.hasDive"
+                       ng-model="user.diveDate"
+                       required
+                       md-min-date="minDate"
+                       md-max-date="maxDate" style="margin-left: -16px;">
+        </md-datepicker>
+        <div ng-messages="simple.diveDate.$error"
+             class="validation-messages"
+             ng-show="simple.diveDate.$dirty">
+          <div ng-message="required">Please provide a date!</div>
+        </div>
+      </div>
+    </div>
+    <md-button class="md-raised md-primary"
+               ng-click="register(user)"
+               ng-disabled="user.hasDive && simple.$invalid"  >
+      Register
+    </md-button>
+  </form>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{registeredUser | json}}
+    </code>
+  </div>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-messages/angular-messages.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="datepicker.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'ngMessages', 'datepicker'])
+</script>
+</body>
+</html>

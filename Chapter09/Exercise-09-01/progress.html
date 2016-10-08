@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Circular progress</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    .progress-cell {
+      margin: auto;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="ProgressController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Progress ring</h1>
+</md-toolbar>
+<md-content flex>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    With determinate value
+  </div>
+  <div layout="row" layout-padding
+    layout-align="center">
+    <div>
+      <md-progress-circular
+        ng-value="currentValue"
+        md-mode="determinate">
+      </md-progress-circular>
+    </div>
+    <div style="padding-left: 16px;">
+      <md-button class="md-raised md-primary"
+        ng-click="start()" ng-disabled="isStarted">
+        Start
+      </md-button>
+      <md-button class="md-raised md-primary"
+        ng-click="stop()" ng-disabled="!isStarted">
+        Stop
+      </md-button>
+      <md-button class="md-raised md-primary"
+        ng-click="set(66)">
+        Set to 66
+      </md-button>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <div layout="row" layout-padding
+    class="md-body-2">
+    Indeterminate state
+  </div>
+  <div layout="row" layout-align="space-around">
+    <div layout="column" layout-padding>
+      <div>Default mode</div>
+      <div flex class="progress-cell">
+        <md-progress-circular md-mode="indeterminate">
+        </md-progress-circular>
+      </div>
+    </div>
+    <div layout="column" layout-padding>
+      <div>Accent color, hue-2</div>
+      <div flex class="progress-cell">
+        <md-progress-circular md-mode="indeterminate"
+          class="md-accent md-hue-2">
+        </md-progress-circular>
+      </div>
+    </div>
+    <div layout="column" layout-padding>
+      <div>Primary color, size: 72px</div>
+      <div flex class="progress-cell">
+        <md-progress-circular md-mode="indeterminate"
+          md-diameter="72"
+          style="height: 72px"  >
+        </md-progress-circular>
+      </div>
+    </div>
+    <div layout="column" layout-padding>
+      <div>Warn color, size: 96px</div>
+      <div flex class="progress-cell">
+        <md-progress-circular md-mode="indeterminate"
+          class="md-accent" md-diameter="100%"
+          style="height: 96px"  >
+        </md-progress-circular>
+      </div>
+    </div>
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./progress.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'progress'])
+</script>
+</body>
+</html>

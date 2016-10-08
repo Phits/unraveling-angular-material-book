@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Cards</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    md-content {
+      background-color: #EEEEEE; /* Grey 200 */
+    }
+
+    md-card-content {
+      background-color: #BBDEFB; /* Blue 100 */
+    }
+
+    md-card-content.longest {
+      background-color: #CE93D8; /* Purple 200 */
+    }
+
+    md-card-content.deepest {
+      background-color: #4DB6AC; /* Teal 300 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="DiveLogController">
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      My latest dives
+      <span flex></span>
+      <md-icon>border_color</md-icon>
+      <md-button ng-click="displayAll()"
+                 ng-class="!showLongest && !showDeepest ? 'md-accent md-hue-1' : ''">
+        None
+      </md-button>
+      <md-button ng-click="displayLongest()"
+                 ng-class="showLongest ? 'md-accent md-hue-1' : ''">
+        Longest
+      </md-button>
+      <md-button ng-click="displayDeepest()"
+                 ng-class="showDeepest ? 'md-accent md-hue-1' : ''">
+        Deepest
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content layout="row" layout-wrap>
+    <div flex="33" ng-repeat="dive in dives">
+      <md-card>
+        <md-card-content
+          ng-class="{longest: showLongest && longest === $index,
+            deepest: showDeepest && deepest === $index}"  >
+          <h1>{{dive.depth}} feet | {{dive.time}} min</h1>
+          <h2>{{dive.site}}</h2>
+          <h3>{{dive.location}}</h3>
+        </md-card-content>
+      </md-card>
+    </div>
+  </md-content>
+</div>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./dives.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'dives'])
+      .config(function($mdThemingProvider){
+        $mdThemingProvider.theme('default')
+            .primaryPalette('red')
+            .accentPalette('orange');
+      });
+</script>
+</body>
+</html>

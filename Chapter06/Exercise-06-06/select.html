@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Usingh select</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="SimpleFormController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Select with async loading</h1>
+</md-toolbar>
+<md-content>
+  <form name="simple" novalidate
+        layout-margin>
+    <div layout="column">
+      <md-input-container>
+        <label>Dive type</label>
+        <md-select name="diveType" ng-model="dive.type"
+                   ng-init="dive.type=0">
+          <md-option ng-repeat="type in diveTypes"
+                     ng-value="type.id"  >
+            {{type.name}} ({{type.id}})
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container>
+        <label>Altitude</label>
+        <md-select name="altitudeType"
+                   ng-model="dive.altitudeType"
+                   md-on-open="initAltitudeTypes()" >
+          <md-optgroup ng-repeat="alt in altitudeTypes"
+                       label="{{alt.category}}">
+            <md-option ng-repeat="type in alt.levels">
+              {{type.toString()}}
+            </md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+    </div>
+    <md-button class="md-raised md-primary"
+               ng-click="register(dive)"
+               ng-disabled="simple.$invalid"  >
+      Register
+    </md-button>
+  </form>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{diveInfo | json}}
+    </code>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./select.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'select'])
+</script>
+</body>
+</html>

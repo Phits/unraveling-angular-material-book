@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Simple form with icon labels</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <style>
+    .label-icon {
+      color: #FF9800; /* Orange 500 */
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="SimpleFormController">
+<md-toolbar class="md-toolbar-tools">
+  <h1>Simple form</h1>
+</md-toolbar>
+<md-content>
+  <form name="simple" novalidate
+        layout-margin>
+    <div layout="column">
+      <md-input-container md-no-float>
+        <md-icon class="material-icons label-icon">
+          person
+        </md-icon>
+        <input name="name"
+               ng-model="user.name"
+               required
+               md-maxlength="32"
+               placeholder="Type your name"  />
+        <div ng-messages="simple.name.$error"
+             ng-show="simple.name.$dirty">
+          <div ng-message="required">Please provide a name!</div>
+          <div ng-message="md-maxlength">This name is too long!</div>
+        </div>
+      </md-input-container>
+      <md-input-container md-no-float>
+        <md-icon class="material-icons label-icon">
+          email
+        </md-icon>
+        <input type="email" name="email"
+               ng-model="user.email"
+               required md-maxlength="64"
+               placeholder="Email" />
+        <div ng-messages="simple.email.$error"
+             ng-show="simple.email.$dirty">
+          <div ng-message="required">Please provide an email!</div>
+          <div ng-message="email">Type in a valid email address!</div>
+        </div>
+      </md-input-container>
+    </div>
+    <md-button class="md-raised md-primary"
+               ng-click="register(user)"
+               ng-disabled="simple.$invalid"  >
+      Register
+    </md-button>
+  </form>
+  <md-divider></md-divider>
+  <div layout-margin>
+    <code>
+      {{registeredUser | json}}
+    </code>
+  </div>
+</md-content>
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-messages/angular-messages.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./input.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'ngMessages', 'input'])
+</script>
+</body>
+</html>

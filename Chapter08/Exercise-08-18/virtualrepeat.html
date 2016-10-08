@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Virtual repeat</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="VirtualRepeatController"  >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Virtual repeat</h1>
+</md-toolbar>
+<md-content>
+  <div layout="row">
+    <div id="corner"
+         class="horizontal-axis vertical-axis"  >
+    </div>
+    <md-virtual-repeat-container
+      md-orient-horizontal
+      id="horizontalRuler"
+      class="horizontal-axis"  >
+      <div md-virtual-repeat="item in axisItems"
+        class="horizontal-item"
+        ng-class="{highlighted: item === valueX}"
+        ng-click="selectX(item)">
+        {{item}}
+      </div>
+    </md-virtual-repeat-container>
+  </div>
+  <div layout="row">
+    <md-virtual-repeat-container
+      md-orient-vertical
+      id="verticalRuler"
+      class="vertical-axis">
+      <div md-virtual-repeat="item in axisItems"
+        class="vertical-item"
+        ng-class="{highlighted: item === valueY}"
+        ng-click="selectY(item)">
+        {{item}}
+      </div>
+    </md-virtual-repeat-container>
+    <div id="mainPanel" layout
+      layout-align="center center">
+      Selected: ( {{valueX}}, {{valueY}} )
+    </div>
+  </div>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./virtualrepeat.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'virtualrepeat'])
+</script>
+</body>
+</html>

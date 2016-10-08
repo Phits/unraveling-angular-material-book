@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>Confirmation dialog</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport"
+        content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet"
+        href="./lib/angular-material/angular-material.css"/>
+  <link rel="stylesheet"
+        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <style>
+    .divecard {
+      padding: 8px 24px;
+      background-color: #039BE5; /* Orange 800 */
+    }
+    .divecard h2 {
+      color: white;
+      font-weight: 500;
+      font-size: 1.75em;
+    }
+
+    .divecard h1, .divecard h3 {
+      font-weight: 200;
+      color: #ECEFF1; /* Grey 50 */
+    }
+    .divecard h1 {
+      font-size: 1.5em;
+      margin: 0;
+      margin-top: 16px;
+    }
+
+    .divecard h3 {
+      margin: 0;
+      font-size: 1.25em;
+    }
+  </style>
+</head>
+<body ng-app="myApp" layout="column"
+      ng-controller="DialogController" >
+<md-toolbar class="md-toolbar-tools">
+  <h1>Confirmation dialog</h1>
+</md-toolbar>
+<md-content id="sourcePanel">
+  <div layout layout-padding>
+    <div flex="66">
+      <div class="divecard">
+        <h1>{{dive.site}}</h1>
+        <h3><small>{{dive.location}}</small></h3>
+        <h2>{{dive.depth}} feet | {{dive.time}} min</h2>
+      </div>
+    </div>
+  </div>
+  <div layout layout-padding>
+    <md-button
+        ng-click="showConfirmation($event)"
+        class="md-raised md-warn">
+      Delete
+    </md-button>
+  </div>
+  <md-divider></md-divider>
+  <div layout layout-padding
+       class="md-body-1">
+    &nbsp;{{deleteStatus}}
+  </div>
+  <md-divider></md-divider>
+</md-content>
+
+<!-- Angular/Material scripts -->
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/angular-animate/angular-animate.js"></script>
+<script src="./lib/angular-aria/angular-aria.js"></script>
+<script src="./lib/angular-material/angular-material.js"></script>
+
+<!-- App-specific scripts -->
+<script src="./dialog.js"></script>
+<script type="text/javascript">
+  angular
+      .module('myApp', ['ngMaterial', 'dialog'])
+</script>
+</body>
+</html>
