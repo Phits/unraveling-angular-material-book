@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" >
 <head>
   <title>Alert dialog</title>
@@ -9,8 +9,7 @@
         content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet"
         href="./lib/angular-material/angular-material.css"/>
-  <link rel="stylesheet"
-        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="/css/fonts.css">
 </head>
 <body ng-app="myApp" layout="column"
       ng-controller="DialogController" >
@@ -18,7 +17,7 @@
   <h1>Alert dialog</h1>
 </md-toolbar>
 <md-content id="sourcePanel">
-  <div layout-margin layout-margin>
+  <div layout-margin layout-padding>
     <md-button
         class="md-raised md-accent"
         ng-click="showAlert($event)">

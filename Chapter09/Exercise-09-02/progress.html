@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" >
 <head>
   <title>Linear progress</title>
@@ -9,15 +9,14 @@
         content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet"
         href="./lib/angular-material/angular-material.css"/>
-  <link rel="stylesheet"
-        href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="/css/fonts.css">
   <style>
     .progress-cell {
       padding: 16px;
       margin-bottom: 12px;
     }
   </style>
-</head>
+</head> 
 <body ng-app="myApp" layout="column"
       ng-controller="ProgressController">
 <!-- Single column -->
@@ -48,7 +47,7 @@
     Determinate mode
   </div>
   <div flex class="progress-cell">
-    <md-progress-linear
+    <md-progress-linear>
       md-mode="determinate"
       value="{{currentValue}}"
     </md-progress-linear>
